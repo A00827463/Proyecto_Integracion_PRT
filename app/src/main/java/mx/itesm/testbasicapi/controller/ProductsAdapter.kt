@@ -57,7 +57,7 @@ class ProductsAdapter(
         // Get the data model based on position
         val product: Product = products[position]
         viewHolder.txtProductName.text = product.name
-        val textForPrice = String.format("Get them for only $%.2f", product.price)
+        val textForPrice = String.format("At $%.2f", product.price)
         viewHolder.txtProductPrice.text = textForPrice
 
         if (product.photoPath != null && product.photoPath!!.isNotBlank()) {
