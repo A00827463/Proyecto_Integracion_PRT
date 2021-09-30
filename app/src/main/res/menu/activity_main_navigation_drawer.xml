@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/mnu_products"
+            android:icon="@android:drawable/ic_menu_camera"
+            android:title="@string/mnu_option_products_title" />
+    </group>
+
+    <group
+        android:id="@+id/group_get"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/mnu_shop"
+            android:icon="@android:drawable/ic_menu_manage"
+            android:title="@string/mnu_option_shop_fragment" />
+    </group>
+</menu>

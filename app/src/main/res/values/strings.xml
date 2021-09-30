@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Sample API demo</string>
+    <string name="open_navigation_drawer">Open Navigation drawer</string>
+    <string name="close_navigation_drawer">Close navigation drawer</string>
+    <string name="mnu_option_products_title">Manage products</string>
+    <string name="mnu_option_shop_fragment">Shop!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">This is the SHOP Fragment</string>
+</resources>
