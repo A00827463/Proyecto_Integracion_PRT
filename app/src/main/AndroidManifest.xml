@@ -14,6 +14,9 @@
         android:theme="@style/Theme.TestingProductsAPI"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".controller.OnBoarding"
+            android:exported="true" />
+        <activity
             android:name=".controller.LoginActivity"
             android:exported="true" />
         <activity
@@ -27,7 +30,7 @@
         </activity>
         <activity
             android:name=".controller.MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>

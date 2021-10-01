@@ -48,21 +48,21 @@ public class SplashScreenActivity extends AppCompatActivity {
         new Handler().postDelayed(() -> {
             onBoardingScreen = getSharedPreferences("onBoardingScreen", MODE_PRIVATE);
             boolean isFirstTime = onBoardingScreen.getBoolean("firstTime", true);
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(intent);
-            finish();
-//            if(isFirstTime){
-//                SharedPreferences.Editor editor = onBoardingScreen.edit();
-//                editor.putBoolean("firstTime", true); // Change
-//                editor.commit();
-//                Intent intent = new Intent(getApplicationContext(), OnBoarding.class);
-//                startActivity(intent);
-//                finish();
-//            } else{
-//                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-//                startActivity(intent);
-//                finish();
-//            }
+//            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+//            startActivity(intent);
+//            finish();
+            if(isFirstTime){
+                SharedPreferences.Editor editor = onBoardingScreen.edit();
+                editor.putBoolean("firstTime", true); // Change
+                editor.commit();
+                Intent intent = new Intent(getApplicationContext(), OnBoarding.class);
+                startActivity(intent);
+                finish();
+            } else{
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
 
         }, SPLASH_TIMER);
 

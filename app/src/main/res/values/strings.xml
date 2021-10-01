@@ -6,4 +6,11 @@
     <string name="mnu_option_shop_fragment">Shop</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">This is the SHOP Fragment</string>
+    <string name="first_slide_title">Title 1</string>
+    <string name="second_slide_title">Title 2</string>
+    <string name="third_slide_title">Title 3</string>
+    <string name="first_slide_desc">Description one where you can specify more information</string>
+    <string name="second_slide_desc">Description two where you can specify more information</string>
+    <string name="third_slide_desc">Description one where you can specify more information</string>
+    <string name="lets_go_btn">Lets Go!</string>
 </resources>
