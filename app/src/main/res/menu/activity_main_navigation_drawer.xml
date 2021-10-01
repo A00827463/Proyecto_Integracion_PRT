@@ -6,14 +6,18 @@
             android:icon="@drawable/ic_black_book_open"
             android:checked="true"
             android:title="@string/mnu_option_products_title" />
-    </group>
-
-    <group
-        android:id="@+id/group_get"
-        android:checkableBehavior="single">
         <item
             android:id="@+id/mnu_shop"
             android:icon="@drawable/ic_black_shopping_bag"
             android:title="@string/mnu_option_shop_fragment" />
     </group>
+
+<!--    <group-->
+<!--        android:id="@+id/group_get"-->
+<!--        android:checkableBehavior="single">-->
+<!--        <item-->
+<!--            android:id="@+id/mnu_shop"-->
+<!--            android:icon="@drawable/ic_black_shopping_bag"-->
+<!--            android:title="@string/mnu_option_shop_fragment" />-->
+<!--    </group>-->
 </menu>

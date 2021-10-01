@@ -26,6 +26,7 @@ class LoginActivity : AppCompatActivity() {
         btnLogin.setOnClickListener(loginClickListener())
 
         if (Utils.isUserLoggedIn(this)) advanceToMainActivity()
+        TODO("Check Token Expiration")
     }
 
     private fun loginClickListener(): View.OnClickListener? {
