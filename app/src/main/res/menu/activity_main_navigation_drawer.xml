@@ -3,7 +3,8 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/mnu_products"
-            android:icon="@android:drawable/ic_menu_camera"
+            android:icon="@drawable/ic_black_book_open"
+            android:checked="true"
             android:title="@string/mnu_option_products_title" />
     </group>
 
@@ -12,7 +13,7 @@
         android:checkableBehavior="single">
         <item
             android:id="@+id/mnu_shop"
-            android:icon="@android:drawable/ic_menu_manage"
+            android:icon="@drawable/ic_black_shopping_bag"
             android:title="@string/mnu_option_shop_fragment" />
     </group>
 </menu>

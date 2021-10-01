@@ -6,6 +6,7 @@
         <entry key="app/src/main/res/drawable/round_empty_background.xml" value="0.19444444444444445" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.13728470111448834" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.13728470111448834" />
+        <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.13728470111448834" />
         <entry key="app/src/main/res/layout/fragment_add_product.xml" value="0.13728470111448834" />
         <entry key="app/src/main/res/layout/fragment_products.xml" value="0.13728470111448834" />
         <entry key="app/src/main/res/layout/fragment_shop.xml" value="0.13728470111448834" />

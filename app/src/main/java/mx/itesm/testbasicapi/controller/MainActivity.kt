@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var drawerLayout: DrawerLayout
     lateinit var navigationView: NavigationView
     lateinit var welcomeFragment: WelcomeFragment
+    lateinit var productsFragment: ProductsFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,8 +28,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun showWelcomeFragment() {
         welcomeFragment = WelcomeFragment.newInstance("Michael Scott")
+        var productsFragment: Fragment = ProductsFragment()
+//        supportFragmentManager.beginTransaction()
+//            .replace(R.id.home_content, welcomeFragment)
+//            .commit()
+
         supportFragmentManager.beginTransaction()
-            .replace(R.id.home_content, welcomeFragment)
+            .replace(R.id.home_content, productsFragment)
             .commit()
     }
 
@@ -38,6 +44,7 @@ class MainActivity : AppCompatActivity() {
 
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
+        supportActionBar!!.setTitle("Reports");
 
         val toggle = ActionBarDrawerToggle(
             this, drawerLayout,
@@ -52,8 +59,17 @@ class MainActivity : AppCompatActivity() {
         navigationView.setNavigationItemSelectedListener { item ->
             var fragmentToShow: Fragment = welcomeFragment
             when (item.itemId) {
-                R.id.mnu_products -> fragmentToShow = ProductsFragment()
-                R.id.mnu_shop -> fragmentToShow = ShopFragment()
+                R.id.mnu_products -> {
+                    fragmentToShow = ProductsFragment()
+                    supportActionBar!!.setTitle("Reports")
+                }
+
+                R.id.mnu_shop -> {
+                    fragmentToShow = ShopFragment();
+                    supportActionBar!!.setTitle("Shop")
+                }
+
+
                 else -> {
                     Snackbar.make(
                         drawerLayout,
