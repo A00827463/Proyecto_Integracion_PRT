@@ -1,4 +1,4 @@
-package mx.itesm.testbasicapi.controller
+package mx.itesm.testbasicapi.controller.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
 import mx.itesm.testbasicapi.R
 import mx.itesm.testbasicapi.Utils.Companion.BASE_URL
 import mx.itesm.testbasicapi.model.entities.Product
@@ -42,7 +41,7 @@ class ProductsAdapter(
 
     // ... constructor and member variables
     // Usually involves inflating a layout from XML and returning the holder
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductsAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val context = parent.context
         val inflater = LayoutInflater.from(context)
         // Inflate the custom layout
@@ -52,7 +51,7 @@ class ProductsAdapter(
     }
 
     // Involves populating data into the item through holder
-    override fun onBindViewHolder(viewHolder: ProductsAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         // https://stackoverflow.com/questions/49969278/recyclerview-item-click-listener-the-right-way
         // Get the data model based on position
         val product: Product = products[position]

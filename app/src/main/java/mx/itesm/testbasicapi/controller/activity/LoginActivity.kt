@@ -1,4 +1,4 @@
-package mx.itesm.testbasicapi.controller
+package mx.itesm.testbasicapi.controller.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -25,8 +25,8 @@ class LoginActivity : AppCompatActivity() {
         btnLogin = findViewById(R.id.btnLogin)
         btnLogin.setOnClickListener(loginClickListener())
 
-        if (Utils.isUserLoggedIn(this)) advanceToMainActivity()
-        TODO("Check Token Expiration")
+//        if (Utils.isUserLoggedIn(this)) advanceToMainActivity()
+        // Check Expiration
     }
 
     private fun loginClickListener(): View.OnClickListener? {

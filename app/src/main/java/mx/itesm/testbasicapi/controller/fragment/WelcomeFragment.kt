@@ -1,4 +1,4 @@
-package mx.itesm.testbasicapi.controller
+package mx.itesm.testbasicapi.controller.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater

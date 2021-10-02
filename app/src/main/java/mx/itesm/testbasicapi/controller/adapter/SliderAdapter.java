@@ -1,4 +1,4 @@
-package mx.itesm.testbasicapi.controller;
+package mx.itesm.testbasicapi.controller.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;

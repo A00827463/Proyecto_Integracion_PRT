@@ -1,4 +1,4 @@
-package mx.itesm.testbasicapi.controller
+package mx.itesm.testbasicapi.controller.fragment
 
 import android.Manifest
 import android.app.Activity

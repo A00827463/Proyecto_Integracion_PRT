@@ -1,4 +1,4 @@
-package mx.itesm.testbasicapi.controller
+package mx.itesm.testbasicapi.controller.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -10,6 +10,9 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 import mx.itesm.testbasicapi.R
+import mx.itesm.testbasicapi.controller.fragment.ProductsFragment
+import mx.itesm.testbasicapi.controller.fragment.ShopFragment
+import mx.itesm.testbasicapi.controller.fragment.WelcomeFragment
 
 class MainActivity : AppCompatActivity() {
     lateinit var drawerLayout: DrawerLayout

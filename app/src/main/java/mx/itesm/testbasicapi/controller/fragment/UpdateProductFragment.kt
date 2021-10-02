@@ -1,4 +1,4 @@
-package mx.itesm.testbasicapi.controller
+package mx.itesm.testbasicapi.controller.fragment
 
 import android.Manifest
 import android.app.Activity
@@ -20,7 +20,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import com.squareup.picasso.Picasso
 import mx.itesm.testbasicapi.R
 import mx.itesm.testbasicapi.Utils
 import mx.itesm.testbasicapi.Utils.Companion.PRODUCT_ID_KEY
@@ -223,7 +222,7 @@ class UpdateProductFragment : Fragment() {
                 ActivityCompat.requestPermissions(
                     requireActivity(),
                     arrayOf(Manifest.permission.CAMERA),
-                    UpdateProductFragment.CAMERA_PERMISSION_CODE
+                    CAMERA_PERMISSION_CODE
                 )
             } else {
                 Log.i("tag", "we have the permission, thanks")

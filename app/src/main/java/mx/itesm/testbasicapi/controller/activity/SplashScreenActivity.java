@@ -1,4 +1,4 @@
-package mx.itesm.testbasicapi.controller;
+package mx.itesm.testbasicapi.controller.activity;
 
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -59,7 +59,8 @@ public class SplashScreenActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             } else{
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+//                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Forms.class);
                 startActivity(intent);
                 finish();
             }

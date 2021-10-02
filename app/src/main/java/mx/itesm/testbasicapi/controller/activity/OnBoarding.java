@@ -1,4 +1,4 @@
-package mx.itesm.testbasicapi.controller;
+package mx.itesm.testbasicapi.controller.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import mx.itesm.testbasicapi.R;
+import mx.itesm.testbasicapi.controller.adapter.SliderAdapter;
 
 public class OnBoarding extends AppCompatActivity {
 
@@ -32,6 +33,7 @@ public class OnBoarding extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_on_boarding);
+
         // Hooks
         viewPager = findViewById(R.id.slider);
         dotsLayout = findViewById(R.id.dots);

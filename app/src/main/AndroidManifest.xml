@@ -14,13 +14,16 @@
         android:theme="@style/Theme.TestingProductsAPI"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".controller.OnBoarding"
+            android:name=".controller.activity.Forms"
             android:exported="true" />
         <activity
-            android:name=".controller.LoginActivity"
+            android:name=".controller.activity.OnBoarding"
             android:exported="true" />
         <activity
-            android:name=".controller.SplashScreenActivity"
+            android:name=".controller.activity.LoginActivity"
+            android:exported="true" />
+        <activity
+            android:name=".controller.activity.SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,7 +32,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".controller.MainActivity"
+            android:name=".controller.activity.MainActivity"
             android:exported="true" />
     </application>
 
