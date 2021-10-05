@@ -40,5 +40,12 @@ class Utils {
             )
             return sharedPreferences.contains(TOKEN_KEY)
         }
+        fun userLogOut(context: Context) {
+            context.getSharedPreferences(
+                TOKEN_PREFS,
+                AppCompatActivity.MODE_PRIVATE
+            ).edit().clear().apply()
+        }
+
     }
 }

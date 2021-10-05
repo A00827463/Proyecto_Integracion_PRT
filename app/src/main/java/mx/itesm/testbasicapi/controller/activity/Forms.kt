@@ -35,7 +35,7 @@ class Forms : AppCompatActivity() {
         fragmentAdapter = FragmentAdapter(supportFragmentManager, lifecycle)
         viewPager.setAdapter(fragmentAdapter)
 
-//        if (Utils.isUserLoggedIn(this)) advanceToMainActivity()
+        if (Utils.isUserLoggedIn(this)) advanceToMainActivity()
 
     }
 
@@ -57,10 +57,6 @@ class Forms : AppCompatActivity() {
         // Check valid inputs(email, password)
 
         // Check Valid user with data base
-//        var email = findViewById<EditText>(R.id.login_email_input)
-//        lateinit var email: TextInputLayout
-//        var emailGet = findViewById<TextInputLayout>(R.id.login_email_input)
-
         val loginEmailInput = findViewById<TextInputLayout>(R.id.login_email_input)
         val email = "${loginEmailInput.editText?.text}"
 
@@ -72,9 +68,8 @@ class Forms : AppCompatActivity() {
             "email: $email \n pass: $password \n ",
             Toast.LENGTH_LONG
         ).show()
-        advanceToMainActivity()
 
-    /*
+
         val user = User("anyname", email, password)
             Model(Utils.getToken(this)).login(user, object : ILogin {
 
@@ -114,9 +109,6 @@ class Forms : AppCompatActivity() {
                     Log.e("addProduct", t.message.toString())
                 }
             })
-    */
-
-        // Redirect to main Activity
 
     }
 

@@ -1,6 +1,8 @@
 package mx.itesm.testbasicapi.controller.activity
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -10,6 +12,7 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 import mx.itesm.testbasicapi.R
+import mx.itesm.testbasicapi.Utils
 import mx.itesm.testbasicapi.controller.fragment.ProductsFragment
 import mx.itesm.testbasicapi.controller.fragment.ShopFragment
 import mx.itesm.testbasicapi.controller.fragment.WelcomeFragment
@@ -97,5 +100,19 @@ class MainActivity : AppCompatActivity() {
         } else
         // Exit the app
             super.onBackPressed()
+    }
+
+    fun logout(view: View) {
+        Utils.userLogOut(this)
+        backToForms()
+
+    }
+
+    private fun backToForms() {
+        val formsActivityIntent =
+            Intent(applicationContext, Forms::class.java)
+        formsActivityIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(formsActivityIntent)
+        finish()
     }
 }

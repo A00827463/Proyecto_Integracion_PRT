@@ -49,7 +49,7 @@ public class OnBoarding extends AppCompatActivity {
     }
 
     public void skip(View view){
-        startActivity(new Intent(this, LoginActivity.class));
+        startActivity(new Intent(this, Forms.class));
         finish();
     }
 
