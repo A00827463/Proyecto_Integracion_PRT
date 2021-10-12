@@ -75,6 +75,7 @@ class UpdateProductFragment : Fragment() {
         btnRemovePhoto = view.findViewById(R.id.btnRemovePhoto)
         btnUpdateProduct = view.findViewById(R.id.btnUpdateProduct)
         btnDeleteProduct = view.findViewById(R.id.btnDeleteProduct)
+
         imgProductPhoto = view.findViewById(R.id.imgProductPhotoUpdateProduct)
         txtProductName = view.findViewById(R.id.txtProductNameUpdateProduct)
         txtProductPrice = view.findViewById(R.id.txtProductPriceUpdateProduct)

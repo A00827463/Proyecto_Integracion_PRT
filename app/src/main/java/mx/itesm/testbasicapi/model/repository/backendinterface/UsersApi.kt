@@ -9,4 +9,7 @@ import retrofit2.http.POST
 interface UsersApi {
     @POST("users/login")
     fun login(@Body user:User): Call<JwtToken>
+
+    @POST("users/")
+    fun createUser(@Body user:User):Call<JwtToken>
 }

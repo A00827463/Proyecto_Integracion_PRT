@@ -9,6 +9,7 @@ class Utils {
     companion object {
         val BASE_URL = "http://10.0.2.2:3000/"
         val PRODUCT_ID_KEY = "productId"
+        val REPORT_ID_KEY = "reportId"
 
         private const val TOKEN_PREFS = "tokenPrefs"
         private const val TOKEN_KEY = "tokenKey"
@@ -38,6 +39,7 @@ class Utils {
                 TOKEN_PREFS,
                 AppCompatActivity.MODE_PRIVATE
             )
+
             return sharedPreferences.contains(TOKEN_KEY)
         }
         fun userLogOut(context: Context) {

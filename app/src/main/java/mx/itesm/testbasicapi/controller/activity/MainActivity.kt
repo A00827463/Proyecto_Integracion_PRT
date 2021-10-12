@@ -1,19 +1,24 @@
 package mx.itesm.testbasicapi.controller.activity
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.textfield.TextInputLayout
 import mx.itesm.testbasicapi.R
 import mx.itesm.testbasicapi.Utils
 import mx.itesm.testbasicapi.controller.fragment.ProductsFragment
+import mx.itesm.testbasicapi.controller.fragment.ReportsFragment
 import mx.itesm.testbasicapi.controller.fragment.ShopFragment
 import mx.itesm.testbasicapi.controller.fragment.WelcomeFragment
 
@@ -34,13 +39,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun showWelcomeFragment() {
         welcomeFragment = WelcomeFragment.newInstance("Michael Scott")
-        var productsFragment: Fragment = ProductsFragment()
-//        supportFragmentManager.beginTransaction()
-//            .replace(R.id.home_content, welcomeFragment)
-//            .commit()
-
+        var reportsFragment: Fragment = ReportsFragment()
         supportFragmentManager.beginTransaction()
-            .replace(R.id.home_content, productsFragment)
+            .replace(R.id.home_content, reportsFragment)
             .commit()
     }
 
@@ -64,15 +65,55 @@ class MainActivity : AppCompatActivity() {
     private fun assignClickListener() {
         navigationView.setNavigationItemSelectedListener { item ->
             var fragmentToShow: Fragment = welcomeFragment
+//            var fragmentToShow: Fragment = welcomeFragment
             when (item.itemId) {
-                R.id.mnu_products -> {
-                    fragmentToShow = ProductsFragment()
-                    supportActionBar!!.setTitle("Reports")
-                }
+                R.id.mnu_profile -> {
+                    Snackbar.make(
+                        drawerLayout,
+                        "Profile",
+                        Snackbar.LENGTH_LONG
+                    ).show()
 
-                R.id.mnu_shop -> {
+                }
+                R.id.mnu_reports -> {
+                    fragmentToShow = ReportsFragment()
+                    supportActionBar!!.title = "Reports"
+                }
+                R.id.mnu_notifications -> {
+                    Snackbar.make(
+                        drawerLayout,
+                        "Notifications",
+                        Snackbar.LENGTH_LONG
+                    ).show()
+
+                }
+                R.id.mnu_settings -> {
+                    Snackbar.make(
+                        drawerLayout,
+                        "Settings",
+                        Snackbar.LENGTH_LONG
+                    ).show()
+
+                }
+                R.id.mnu_donate -> {
                     fragmentToShow = ShopFragment();
-                    supportActionBar!!.setTitle("Shop")
+                    supportActionBar!!.title = "Donate"
+                }
+                R.id.mnu_archived -> {
+                    Snackbar.make(
+                        drawerLayout,
+                        "Archived",
+                        Snackbar.LENGTH_LONG
+                    ).show()
+
+                }
+                R.id.mnu_stats -> {
+                    Snackbar.make(
+                        drawerLayout,
+                        "Statistics",
+                        Snackbar.LENGTH_LONG
+                    ).show()
+
                 }
 
 
@@ -115,4 +156,12 @@ class MainActivity : AppCompatActivity() {
         startActivity(formsActivityIntent)
         finish()
     }
+
+    fun donate(view: View){
+        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://parquerufinotamayo.com/hazlo-tuyo/"))
+        startActivity(browserIntent)
+
+    }
+
+
 }

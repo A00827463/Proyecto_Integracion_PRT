@@ -3,9 +3,11 @@ package mx.itesm.testbasicapi.model
 import com.google.gson.Gson
 import mx.itesm.testbasicapi.model.entities.JwtToken
 import mx.itesm.testbasicapi.model.entities.Product
+import mx.itesm.testbasicapi.model.entities.Report
 import mx.itesm.testbasicapi.model.entities.User
 import mx.itesm.testbasicapi.model.repository.RemoteRepository
 import mx.itesm.testbasicapi.model.repository.backendinterface.ProductsApi
+import mx.itesm.testbasicapi.model.repository.backendinterface.ReportsApi
 import mx.itesm.testbasicapi.model.repository.backendinterface.UsersApi
 import mx.itesm.testbasicapi.model.repository.responseinterface.*
 import okhttp3.MediaType
@@ -177,6 +179,108 @@ class Model(private val token:String) {
             }
 
             override fun onFailure(call: Call<JwtToken?>, t: Throwable) {
+                callback.onFailure(t)
+            }
+        })
+    }
+
+    fun createUser(user: User, callback: ICreateUser){
+        val retrofit = RemoteRepository.getRetrofitInstance(token)
+
+        val callCreateUser = retrofit.create(UsersApi::class.java).createUser(user)
+
+        callCreateUser.enqueue(object : Callback<JwtToken?> {
+            override fun onResponse(call: Call<JwtToken?>, response: Response<JwtToken?>) {
+                if (response.isSuccessful) callback.onSuccess(response.body())
+                else {
+                    val message: String = if (response.errorBody() != null)
+                        response.errorBody()!!.string()
+                    else
+                        response.message()
+                    callback.onNoSuccess(response.code(), message)
+                }
+            }
+
+            override fun onFailure(call: Call<JwtToken?>, t: Throwable) {
+                callback.onFailure(t)
+            }
+        })
+    }
+
+    fun getReports(callback: IGetReports){
+        val retrofit = RemoteRepository.getRetrofitInstance(token)
+        val callGetUser = retrofit.create(ReportsApi::class.java).getReports()
+        callGetUser.enqueue(object : Callback<List<Report>?> {
+            override fun onResponse(
+                call: Call<List<Report>?>,
+                response: Response<List<Report>?>
+            ) {
+                if (response.isSuccessful) callback.onSuccess(response.body())
+                else callback.onNoSuccess(response.code(), response.message())
+            }
+
+            override fun onFailure(call: Call<List<Report>?>, t: Throwable) {
+                callback.onFailure(t)
+            }
+        })
+
+    }
+
+    fun getReport(reportId: String, callback: IGetReport) {
+        val retrofit = RemoteRepository.getRetrofitInstance(token)
+        val callGetReport = retrofit.create(ReportsApi::class.java).getReport(reportId)
+
+        callGetReport.enqueue(object : Callback<Report?> {
+            override fun onResponse(call: Call<Report?>, response: Response<Report?>) {
+                if (response.isSuccessful)
+                    callback.onSuccess(response.body())
+                else {
+                    val message: String = if (response.errorBody() != null)
+                        response.errorBody()!!.string()
+                    else
+                        response.message()
+                    callback.onNoSuccess(response.code(), message)
+                }
+            }
+
+            override fun onFailure(call: Call<Report?>, t: Throwable) {
+                callback.onFailure(t)
+            }
+        })
+    }
+
+    fun addReport(report: Report, reportPhotoBytes: ByteArray, callback: IAddReport) {
+        val bodyReportPhoto =
+            RequestBody.create(MediaType.parse("application/octet-stream"), reportPhotoBytes)
+        val partReportPhoto =
+            MultipartBody.Part.createFormData("photo", "report.png", bodyReportPhoto)
+
+        val reportAsJson = Gson().toJson(report)
+        val reportPart = MultipartBody.Part.createFormData("report", reportAsJson)
+
+        val retrofit = RemoteRepository.getRetrofitInstance(token)
+        // val callAddProduct = retrofit.create(ProductsApi::class.java).insertProduct(productPart, partProductPhoto)
+        val callAddReport: Call<Report> = if (reportPhotoBytes.isEmpty())
+            retrofit.create(ReportsApi::class.java).insertReport(reportPart, null)
+        else
+            retrofit.create(ReportsApi::class.java)
+                .insertReport(reportPart, partReportPhoto)
+
+        callAddReport.enqueue(object : Callback<Report?> {
+            override fun onResponse(call: Call<Report?>, response: Response<Report?>) {
+                if (response.isSuccessful) {
+                    callback.onSuccess(report)
+                } else {
+                    // callback.onNoSuccess(response.code(), "something went wrong")
+                    val message: String = if (response.errorBody() != null)
+                        response.errorBody()!!.string()
+                    else
+                        response.message()
+                    callback.onNoSuccess(response.code(), message)
+                }
+            }
+
+            override fun onFailure(call: Call<Report?>, t: Throwable) {
                 callback.onFailure(t)
             }
         })
