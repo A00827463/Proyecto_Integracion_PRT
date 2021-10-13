@@ -17,7 +17,6 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
 import mx.itesm.testbasicapi.R
 import mx.itesm.testbasicapi.Utils
-import mx.itesm.testbasicapi.controller.fragment.ProductsFragment
 import mx.itesm.testbasicapi.controller.fragment.ReportsFragment
 import mx.itesm.testbasicapi.controller.fragment.ShopFragment
 import mx.itesm.testbasicapi.controller.fragment.WelcomeFragment
@@ -26,7 +25,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var drawerLayout: DrawerLayout
     lateinit var navigationView: NavigationView
     lateinit var welcomeFragment: WelcomeFragment
-    lateinit var productsFragment: ProductsFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

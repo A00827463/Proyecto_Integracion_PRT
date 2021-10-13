@@ -6,21 +6,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.textfield.TextInputLayout
 import mx.itesm.testbasicapi.R
 import mx.itesm.testbasicapi.Utils
-import mx.itesm.testbasicapi.controller.adapter.ProductsAdapter
 import mx.itesm.testbasicapi.controller.adapter.ReportsAdapter
 import mx.itesm.testbasicapi.model.Model
-import mx.itesm.testbasicapi.model.entities.Product
 import mx.itesm.testbasicapi.model.entities.Report
-import mx.itesm.testbasicapi.model.repository.responseinterface.IGetProducts
 import mx.itesm.testbasicapi.model.repository.responseinterface.IGetReports
 
 class ReportsFragment : Fragment() {

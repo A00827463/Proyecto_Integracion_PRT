@@ -1,6 +1,5 @@
 package mx.itesm.testbasicapi.model.repository.backendinterface
 
-import mx.itesm.testbasicapi.model.entities.Product
 import mx.itesm.testbasicapi.model.entities.Report
 import okhttp3.MultipartBody
 import retrofit2.Call
