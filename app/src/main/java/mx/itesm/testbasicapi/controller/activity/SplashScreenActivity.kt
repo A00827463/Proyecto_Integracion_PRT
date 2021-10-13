@@ -47,7 +47,7 @@ class SplashScreenActivity : AppCompatActivity() {
             //            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
 //            startActivity(intent);
 //            finish();
-            if (isFirstTime) {
+            if (!isFirstTime) {
                 val editor = onBoardingScreen.edit()
                 editor.putBoolean("firstTime", false) // Change
                 editor.commit()
@@ -65,6 +65,6 @@ class SplashScreenActivity : AppCompatActivity() {
 
     companion object {
         // Constants
-        private const val SPLASH_TIMER = 1200
+        private const val SPLASH_TIMER = 3000
     }
 }

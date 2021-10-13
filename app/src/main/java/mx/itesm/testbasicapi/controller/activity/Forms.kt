@@ -25,6 +25,7 @@ import java.util.regex.Pattern
 class Forms : AppCompatActivity() {
     lateinit var viewPager: ViewPager2
     lateinit var fragmentAdapter: FragmentAdapter
+    var cont: Int = 0
     val EMAIL_ADDRESS_PATTERN: Pattern = Pattern.compile(
         "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
                 "\\@" +
@@ -93,6 +94,15 @@ class Forms : AppCompatActivity() {
             loginPasswordInput.error = "Password Empty"
             return
         }
+        if(cont == 5){
+            Toast.makeText(
+            this@Forms,
+            "cinco intentos fallidos, intenta mas tarde",
+            Toast.LENGTH_LONG
+            ).show()
+            cont = 0
+            return
+        }
 
 
 
@@ -113,6 +123,7 @@ class Forms : AppCompatActivity() {
                         Utils.saveToken(token, this@Forms.applicationContext)
                         // This updates the HttpClient that at this moment might not have a valid token!
                         RemoteRepository.updateRemoteReferences(token.token, this@Forms);
+                        cont = 0;
                         advanceToMainActivity()
                     } else {
                         // do not advance, an error occurred
@@ -131,6 +142,7 @@ class Forms : AppCompatActivity() {
                         Toast.LENGTH_SHORT
                     ).show()
                     Log.e("addProduct", "$code: $message")
+                    cont++
                 }
 
                 override fun onFailure(t: Throwable) {
