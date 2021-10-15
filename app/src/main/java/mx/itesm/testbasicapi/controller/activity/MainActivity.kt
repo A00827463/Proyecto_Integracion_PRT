@@ -17,6 +17,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
 import mx.itesm.testbasicapi.R
 import mx.itesm.testbasicapi.Utils
+import mx.itesm.testbasicapi.controller.fragment.ProfileFragment
 import mx.itesm.testbasicapi.controller.fragment.ReportsFragment
 import mx.itesm.testbasicapi.controller.fragment.ShopFragment
 import mx.itesm.testbasicapi.controller.fragment.WelcomeFragment
@@ -66,6 +67,9 @@ class MainActivity : AppCompatActivity() {
 //            var fragmentToShow: Fragment = welcomeFragment
             when (item.itemId) {
                 R.id.mnu_profile -> {
+                    fragmentToShow = ProfileFragment()
+                    supportActionBar!!.title = "Profile"
+
                     Snackbar.make(
                         drawerLayout,
                         "Profile",

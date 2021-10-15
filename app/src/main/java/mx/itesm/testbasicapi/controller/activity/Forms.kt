@@ -1,15 +1,14 @@
 package mx.itesm.testbasicapi.controller.activity
 
+import android.R.attr
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.EditText
 import android.widget.Toast
 import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.textfield.TextInputEditText
+import android.os.CountDownTimer;
 import com.google.android.material.textfield.TextInputLayout
 import mx.itesm.testbasicapi.R
 import mx.itesm.testbasicapi.Utils
@@ -21,6 +20,11 @@ import mx.itesm.testbasicapi.model.repository.RemoteRepository
 import mx.itesm.testbasicapi.model.repository.responseinterface.ICreateUser
 import mx.itesm.testbasicapi.model.repository.responseinterface.ILogin
 import java.util.regex.Pattern
+import android.R.attr.button
+import android.annotation.SuppressLint
+import android.content.Context
+import android.widget.CheckBox
+
 
 class Forms : AppCompatActivity() {
     lateinit var viewPager: ViewPager2
@@ -48,6 +52,19 @@ class Forms : AppCompatActivity() {
 
         if (Utils.isUserLoggedIn(this)) advanceToMainActivity()
 
+        val loginEmailInput = findViewById<TextInputLayout>(R.id.login_email_input)
+        val loginPasswordInput = findViewById<TextInputLayout>(R.id.login_password_input)
+
+        val sharedPreference =  getSharedPreferences("LOGIN_INFO", Context.MODE_PRIVATE)
+        var shareCheck = sharedPreference.getBoolean("check", false)
+        var shareEmail = sharedPreference.getString("email", null)
+        var sharePass = sharedPreference.getString("pass", null)
+        if(shareCheck){
+            loginEmailInput.editText?.setText(shareEmail)
+            loginPasswordInput.editText?.setText(sharePass)
+        }
+        else sharedPreference.edit().clear().commit()
+
     }
 
 
@@ -63,20 +80,26 @@ class Forms : AppCompatActivity() {
     fun redirectRecover(view: View?) {
         viewPager!!.currentItem = 2
     }
+    fun redirectTermsConditions(view: View?) {
+        Toast.makeText(
+            this@Forms,
+            "Redirected to Terms and Conditions",
+            Toast.LENGTH_LONG
+        ).show()
+    }
     private fun checkEmail(email: String): Boolean {
         return EMAIL_ADDRESS_PATTERN.matcher(email).matches()
     }
 
+
+    @SuppressLint("CommitPrefEdits")
     fun login(view: View?) {
         // Check valid inputs(email, password)
-
-
-
-        // Check Valid user with data base
         val loginEmailInput = findViewById<TextInputLayout>(R.id.login_email_input)
-        val email = "${loginEmailInput.editText?.text}"
-
         val loginPasswordInput = findViewById<TextInputLayout>(R.id.login_password_input)
+        val checkBoxInput = findViewById<CheckBox>(R.id.check_box)
+
+        val email = "${loginEmailInput.editText?.text}"
         val password = "${loginPasswordInput.editText?.text}"
 
         loginEmailInput.error = null
@@ -100,8 +123,31 @@ class Forms : AppCompatActivity() {
             "cinco intentos fallidos, intenta mas tarde",
             Toast.LENGTH_LONG
             ).show()
+
+//            val timer = object: CountDownTimer(20000, 1000) {
+//                override fun onTick(millisUntilFinished: Long) {
+//                }
+//                override fun onFinish() {
+//                    Toast.makeText(
+//                        this@Forms,
+//                        "Puedes volver a intentar",
+//                        Toast.LENGTH_LONG
+//                    ).show()
+//                }
+//            }
+//            timer.start()
+
             cont = 0
             return
+        }
+
+        if(checkBoxInput.isChecked){
+            val sharedPreference =  getSharedPreferences("LOGIN_INFO", Context.MODE_PRIVATE)
+            sharedPreference.edit().putBoolean("check", true)
+            sharedPreference.edit().putString("email", email)
+            sharedPreference.edit().putString("password", password)
+            sharedPreference.edit().commit()
+
         }
 
 
@@ -117,7 +163,7 @@ class Forms : AppCompatActivity() {
             Model(Utils.getToken(this)).login(user, object : ILogin {
 
                 override fun onSuccess(token: JwtToken?) {
-//                    Toast.makeText(this@Forms, "Welcome", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@Forms, "Welcome", Toast.LENGTH_LONG).show()
 
                     if (token != null) {
                         Utils.saveToken(token, this@Forms.applicationContext)
@@ -208,7 +254,7 @@ class Forms : AppCompatActivity() {
         val user = User(name, email, password)
         Model(Utils.getToken(this)).createUser(user, object : ICreateUser {
             override fun onSuccess(token: JwtToken?) {
-                Toast.makeText(this@Forms, "Welcome", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@Forms, "Welcome", Toast.LENGTH_LONG).show()
 
                 if (token != null) {
                     Utils.saveToken(token, this@Forms.applicationContext)
